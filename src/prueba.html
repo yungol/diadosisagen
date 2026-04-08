@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello World: The Multiverse Edition</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&family=Inter:wght@300;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+  background-color: #050505;
+            font-family: 'Inter', sans-serif;
+        }
+        .font-orbitron { font-family: 'Orbitron', sans-serif; }
+        
+        /* Animación de brillo para el texto */
+        @keyframes textShimmer {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .animate-shimmer {
+            background: linear-gradient(90deg, #fff, #3b82f6, #9333ea, #fff);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: textShimmer 5s ease infinite;
+        }
+
+        /* Efecto de sacudida para el botón */
+        .shake {
+            animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
+        }
+        @keyframes shake {
+            10%, 90% { transform: translate3d(-1px, 0, 0); }
+            20%, 80% { transform: translate3d(2px, 0, 0); }
+            30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+            40%, 60% { transform: translate3d(4px, 0, 0); }
+        }
+
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center h-screen w-screen">
+
+    <!-- Canvas para el motor de partículas -->
+    <canvas id="particleCanvas"></canvas>
+
+    <!-- Contenedor Principal -->
+    <div class="relative z-10 text-center p-10 glass rounded-3xl shadow-2xl max-w-lg mx-4 transition-all duration-500" id="mainCard">
+        
+        <h1 class="text-6xl md:text-7xl font-orbitron font-black mb-6 animate-shimmer tracking-tighter" id="title">
+            HELLO WORLD
+        </h1>
+
+        <p class="text-gray-400 text-lg mb-8 font-light tracking-widest uppercase" id="subtitle">
+            System Status: <span class="text-green-400">Stable</span>
+        </p>
+
+        <!-- El Botón Espectacular -->
+        <button id="magicButton" class="group relative inline-flex items-center justify-center px-8 py-4 font-bold text-white transition-all duration-200 bg-blue-600 font-pj rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 hover:bg-blue-500 active:scale-95 shadow-[0_0_20px_rgba(37,99,235,0.5)]">
+            <span class="absolute inset-0 w-full h-full rounded-xl bg-gradient-to-r from-blue-400 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-md"></span>
+            <span class="relative flex items-center gap-2 text-lg">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+                INICIAR COLISIÓN
+            </span>
+        </button>
+
+        <div class="mt-8 text-[10px] text-gray-600 uppercase tracking-[0.3em]" id="footerText">
+            Quantum Core v2.0.4
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('particleCanvas');
+        const ctx = canvas.getContext('2d');
+        const btn = document.getElementById('magicButton');
+        const card = document.getElementById('mainCard');
+        const title = document.getElementById('title');
+        const subtitle = document.getElementById('subtitle');
+
+        let particles = [];
+        let width, height;
+
+        // Redimensionar canvas
+        function resize() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resize);
+        resize();
+
+        // Clase Partícula (Programación Orientada a Objetos)
+        class Particle {
+            constructor(x, y, color, velocityX, velocityY) {
+                this.x = x;
+                this.y = y;
+                this.color = color;
+                this.velocityX = velocityX;
+                this.vy = velocityY;
+                this.size = Math.random() * 4 + 1;
+                this.alpha = 1;
+                this.friction = 0.98;
+                this.gravity = 0.05;
+            }
+
+            draw() {
+                ctx.save();
+                ctx.globalAlpha = this.alpha;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = this.color;
+                ctx.shadowBlur = 15;
+                ctx.shadowColor = this.color;
+                ctx.fill();
+                ctx.restore();
+            }
+
+            update() {
+                this.vx *= this.friction;
+                this.vy *= this.friction;
+                this.vy += this.gravity;
+                this.x += this.vx;
+                this.y += this.vy;
+                this.alpha -= 0.01;
+            }
+        }
+
+        // Función de Explosión Espectacular
+        function createExplosion(x, y) {
+            const colors = ['#3b82f6', '#9333ea', '#ec4899', '#ffffff', '#06b6d4'];
+            for (let i = 0;
+i < 100; i++) {
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                const velocityX = (Math.random() - 0.5) * 20;
+                const velocityY = (Math.random() - 0.5) * 20;
+                particles.push(new Particle(x, y, color, velocityX, velocityY));
+            }
+        }
+
+        // Loop de Animación Principal
+        function animate() {
+            ctx.fillStyle = 'rgba(5, 5, 5, 0.15)'; // Efecto estela (motion blur)
+            ctx.fillRect(0, 0, width, height);
+
+            particles.forEach((particle, index) => {
+                if (particle.alpha <= 0) {
+                    particles.splice(index, 1);
+                } else {
+                    particle.update();
+                    particle.draw();
+                }
+            });
+
+            requestAnimationFrame(animate);
+        }
+
+        // Lógica del Botón: El "Evento de Colisión"
+        btn.addEventListener('click', (e) => {
+            const rect = btn.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.arrayTop + rect.height / 2; // Error corregido abajo en el código real
+            
+            // Corregir coordenadas de click
+            const x = e.clientX;
+            const y = e.clientY;
+
+            // 1. Crear explosión visual
+            createExplosion(x, y);
+
+            // 2. Efecto de sacudida en la UI
+            card.classList.add('shake');
+            setTimeout(() => card.classList.remove('shake'), 500);
+
+            // 3. Transformación del DOM (Cambio de estado del sistema)
+            title.innerText = "SYSTEM OVERLOAD";
+            title.style.color = "#ff0000";
+            subtitle.innerHTML = '<span class="text-red-500 animate-pulse">CRITICAL ERROR: REALITY_BREACH</span>';
+            
+            // 4. Cambiar color de fondo gradualmente
+            document.body.style.transition = "background-color 0.5s ease";
+            document.body.style.backgroundColor = "#1a0505";
+
+            // 5. Efecto de partículas extras por todo el viewport
+            for(let i=0; i<20; i++) {
+                createExplosion(Math.random() * width, Math.random() * height);
+            }
+
+            // 6. Reset programado después de 3 segundos (Autonomía del sistema)
+            setTimeout(() => {
+                title.innerText = "HELLO WORLD";
+                title.style.color = "";
+                subtitle.innerHTML = 'System Status: <span class="text-green-400">Stable</span>';
+                document.body.style.backgroundColor = "#050505";
+            }, 3000);
+        });
+
+        // Interacción con el ratón (Efecto de partículas flotantes)
+        window.addEventListener('mousemove', (e) => {
+            if (Math.random() > 0.9) { // Solo crear algunas para no saturar
+                const color = '#3b82f6';
+                particles.push(new Particle(e.clientX, e.clientY, color, (Math.random()-0.5)*2, (Math.random()-0.5)*2));
+            }
+        });
+
+        animate();
+    </script>
+</body>
+</html>
