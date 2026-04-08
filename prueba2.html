@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Qué son las SOC en Auditoría? | Explicación Didáctica</title>
+    <!-- Incluir Tailwind CSS desde CDN para que funcione sin instalación local -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Estilos personalizados si es necesario, aunque Tailwind cubre la mayoría */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7fafc; /* Fondo gris claro suave */
+        }
+    </style>
+</head>
+<body class="p-4 sm:p-8 bg-gray-50">
+
+    <!-- Contenedor Principal -->
+    <div class="max-w-6xl mx-auto bg-white shadow-2xl rounded-xl p-6 md:p-10 border-t-8 border-indigo-600">
+
+        <!-- Encabezado Principal -->
+        <header class="text-center mb-12">
+            <h1 class="text-4xl sm:text-5xl font-extrabold text-gray-900 mb-3 leading-tight">
+                🛡️ ¿Qué son las SOC en Auditoría?
+            </h1>
+            <p class="text-xl text-indigo-600 font-medium">
+                Entendiendo los Controles de Seguridad y Operación.
+            </p>
+            <div class="mt-4 inline-block bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-3 rounded-lg shadow-md">
+                💡 **Objetivo:** Aprender de forma sencilla qué son y por qué son cruciales para la confianza digital.
+            </div>
+        </header>
+
+        <!-- Sección 1: ¿Qué es una SOC? (Definición) -->
+        <section id="que-son" class="mb-12 p-6 bg-indigo-50 rounded-lg shadow-inner">
+            <h2 class="text-3xl font-bold text-gray-800 mb-4 flex items-center">
+                <svg class="w-7 h-7 mr-3 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2l2-2m" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l2 2l2-2m-4 0h-8"></path></svg>
+                ¿Qué son los Reportes SOC?
+            </h2>
+            <p class="text-lg text-gray-700 mb-4 border-l-4 border-indigo-300 pl-4 italic">
+                En términos sencillos, un reporte SOC es una **auditoría externa** que evalúa si una empresa (el "Servicio") está manejando la información de sus clientes de manera segura y confiable.
+            </p>
+            <div class="grid md:grid-cols-3 gap-4 text-center mt-6">
+                <div class="bg-white p-4 rounded-lg shadow hover:shadow-md transition duration-300 border-t-4 border-green-500">
+                    <p class="text-2xl font-bold text-green-700">✅ Confianza</p>
+                    <p class="text-sm text-gray-600 mt-1">Demuestra compromiso con la seguridad.</p>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow hover:shadow-md transition duration-300 border-t-4 border-yellow-500">
+                    <p class="text-2xl font-bold text-yellow-700">🔍 Auditoría</p>
+                    <p class="text-sm text-gray-600 mt-1">Realizada por terceros expertos.</p>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow hover:shadow-md transition duration-300 border-t-4 border-red-500">
+                    <p class="text-2xl font-bold text-red-700">🛡️ Seguridad</p>
+                    <p class="text-sm text-gray-600 mt-1">Evalúa procesos, no solo tecnología.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección 2: Los Pilares (Trust Services Criteria) -->
+        <section id="pilares" class="mb-12 p-8 bg-white rounded-xl shadow-lg border border-gray-200">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6 flex items-center">
+                <svg class="w-7 h-7 mr-3 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5s3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18s-3.332.477-4.5 1.253"></path></svg>
+                Los 5 Criterios de Confianza (Trust Services Criteria)
+            </h2>
+            <p class="text-lg text-gray-600 mb-6">
+                Un reporte SOC no solo dice "somos seguros"; detalla *en qué* áreas se revisó. Estos son los criterios clave:
+            </p>
+
+            <!-- Grid de Criterios -->
+            <div class="grid md:grid-cols-2 gap-6">
+                
+                <!-- Seguridad (Security) - Siempre obligatorio -->
+                <div class="bg-red-50 p-5 rounded-lg border-l-8 border-red-500 shadow-md hover:shadow-lg transition duration-300">
+                    <h3 class="text-xl font-bold text-red-700 mb-1 flex items-center">
+                        <span class="mr-2">🔒</span> Seguridad (Security)
+                    </h3>
+                    <p class="text-gray-700 text-sm"><strong>(Obligatorio)</strong> Cubre los controles fundamentales para proteger la información contra accesos no autorizados.</p>
+                </div>
+
+                <!-- Disponibilidad (Availability) -->
+                <div class="bg-green-50 p-5 rounded-lg border-l-8 border-green-500 shadow-md hover:shadow-lg transition duration-300">
+                    <h3 class="text-xl font-bold text-green-700 mb-1 flex items-center">
+                        <span class="mr-2">🟢</span> Disponibilidad (Availability)
+                    </h3>
+                    <p class="text-gray-700 text-sm">Evalúa si los sistemas están operativos y accesibles cuando el cliente los necesita.</p>
+                </div>
+
+                <!-- Integridad (Processing Integrity) -->
+                <div class="bg-blue-50 p-5 rounded-lg border-l-8 border-blue-500 shadow-md hover:shadow-lg transition duration-300">
+                    <h3 class="text-xl font-bold text-blue-700 mb-1 flex items-center">
+                        <span class="mr-2">🔢</span> Integridad del Procesamiento (Processing Integrity)
+                    </h3>
+                    <p class="text-gray-700 text-sm">Asegura que la información se procese completa, precisa y en el orden correcto.</p>
+                </div>
+
+                <!-- Confidencialidad (Confidentiality) -->
+                <div class="bg-purple-50 p-5 rounded-lg border-l-8 border-purple-500 shadow-md hover:shadow-lg transition duration-300">
+                    <h3 class="text-xl font-bold text-purple-700 mb-1 flex items-center">
+                        <span class="mr-2">🤫</span> Confidencialidad (Confidentiality)
+                    </h3>
+                    <p class="text-gray-700 text-sm">Se enfoca en proteger la información sensible de terceros, solo para los ojos autorizados.</p>
+                </div>
+
+                 <!-- Privacidad (Privacy) -->
+                <div class="bg-yellow-50 p-5 rounded-lg border-l-8 border-yellow-500 shadow-md hover:shadow-lg transition duration-300 md:col-span-2">
+                    <h3 class="text-xl font-bold text-yellow-700 mb-1 flex items-center">
+                        <span class="mr-2">👤</span> Privacidad (Privacy)
+                    </h3>
+                    <p class="text-gray-700 text-sm">Controla cómo se recopilan, usan y comparten los datos personales de los clientes.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Sección 3: ¿Por qué son importantes? (Conclusión) -->
+        <section id="importancia" class="mb-12 p-8 bg-indigo-700 rounded-xl shadow-2xl">
+            <h2 class="text-3xl font-bold text-white mb-4 flex items-center">
+                <svg class="w-7 h-7 mr-3 text-yellow-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8m-4-4h.01M12 16h.01"></path></svg>
+                ¿Por qué debería importarme un SOC? (El Valor)
+            </h2>
+            <div class="grid sm:grid-cols-3 gap-6 mt-6 text-center">
+                
+                <!-- Beneficio 1 -->
+                <div class="bg-white p-5 rounded-lg shadow-xl transform hover:scale-[1.02] transition duration-300 border-b-4 border-indigo-400">
+                    <p class="text-4xl mb-2 text-indigo-600">🤝</p>
+                    <h4 class="font-bold text-lg text-gray-800 mb-1">Genera Confianza</h4>
+                    <p class="text-sm text-gray-600">Permite que sus clientes confíen en usted al usar su plataforma.</p>
+                </div>
+
+                <!-- Beneficio 2 -->
+                <div class="bg-white p-5 rounded-lg shadow-xl transform hover:scale-[1.02] transition duration-300 border-b-4 border-indigo-400">
+                    <p class="text-4xl mb-2 text-indigo-600">⚖️</p>
+                    <h4 class="font-bold text-lg text-gray-800 mb-1">Mitiga Riesgos</h4>
+                    <p class="text-sm text-gray-600">Demuestra que ha pensado en los riesgos de seguridad y los ha controlado.</p>
+                </div>
+
+                <!-- Beneficio 3 -->
+                <div class="bg-white p-5 rounded-lg shadow-xl transform hover:scale-[1.02] transition duration-300 border-b-4 border-indigo-400">
+                    <p class="text-4xl mb-2 text-indigo-600">🚀</p>
+                    <h4 class="font-bold text-lg text-gray-800 mb-1">Ventaja Competitiva</h4>
+                    <p class="text-sm text-gray-600">Es un requisito o un gran plus al negociar con grandes corporaciones.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Pie de Página / Llamada a la Acción -->
+        <footer class="text-center mt-12 p-6 bg-gray-100 rounded-lg border-t-4 border-indigo-600">
+            <p class="text-xl font-semibold text-gray-800 mb-3">En resumen:</p>
+            <p class="text-md text-gray-700 max-w-3xl mx-auto">
+                Un reporte SOC es su **pasaporte de confianza** en el mundo digital. No es solo un papel, es la prueba auditada de que usted protege los datos con seriedad y rigor.
+            </p>
+        </footer>
+
+    </div>
+
+</body>
+</html>

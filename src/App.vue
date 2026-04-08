@@ -58,6 +58,7 @@ import SlidePortada from './components/SlidePortada.vue';
 import SlideComoFuncionaWeb from './components/SlideComoFuncionaWeb.vue';
 import SlideComponentesWeb from './components/SlideComponentesWeb.vue';
 import SlideHelloWorld from './components/SlideHelloWorld.vue';
+import SlidePromptIA from './components/SlidePromptIA.vue';
 
 export default {
   name: 'App',
@@ -66,6 +67,7 @@ export default {
     SlideComoFuncionaWeb,
     SlideComponentesWeb,
     SlideHelloWorld,
+    SlidePromptIA,
   },
   data() {
     return {
@@ -76,6 +78,7 @@ export default {
         'SlideComoFuncionaWeb',
         'SlideComponentesWeb',
         'SlideHelloWorld',
+        'SlidePromptIA',
       ]
     }
   },
