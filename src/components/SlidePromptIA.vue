@@ -25,7 +25,7 @@
         <div class="bg-gray-900 text-gray-100 font-mono text-xl md:text-2xl p-8 pt-9 rounded-xl shadow-inner leading-relaxed text-left">
           dame un&nbsp;
           <span class="bg-isagen-green text-isagen-dark font-extrabold px-2 py-0.5 rounded">html autocontenido</span>
-          &nbsp;que explique de forma didáctica que son las SOX en auditoría utilizando&nbsp;
+          &nbsp;que explique de forma didáctica que son los controles SOX en auditoría utilizando&nbsp;
           <span class="bg-isagen-blue text-white font-extrabold px-2 py-0.5 rounded">tailwind</span>
           &nbsp;para los estilos
         </div>
